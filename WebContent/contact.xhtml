@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui" xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Contact</title>
+</h:head>
+<h:body>
+
+	<ui:decorate template="/WEB-INF/templates/BasicTemplate.xhtml">
+		<ui:define name="content">
+
+			<style type="text/css">
+.value {
+	font-weight: bold;
+}
+</style>
+<br/><br/><br/><br/>
+<div align="center">
+		
+<p:tooltip />
+
+
+ 
+<p:separator />
+ 
+<h:form>
+    <h:panelGrid id="grid" columns="3" cellpadding="5">
+        <p:outputLabel for="default" value="Nom : " />
+        <p:inputText id="default" required="true" />
+        <p:message for="default" />
+ 
+        <p:outputLabel for="txt" value="Email : " />
+        <p:inputText id="txt" required="true"><f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/></p:inputText>
+        <p:message for="txt" display="default" />
+
+ 
+        <p:outputLabel for="icon" value="Objet :" />
+        <p:inputText id="icon" required="true" />
+         
+        <p:message for="icon" display="default" />
+ 
+        <p:outputLabel for="tt" value="Message :" />
+        <p:inputText id="tt" required="true"  />
+        <p:message for="tt" display="default" />
+    </h:panelGrid>
+ 
+    <p:commandButton id="submitButton" value="Envoyer" update="grid" action="#{validationView.info}" />
+</h:form>
+</div>
+
+
+		</ui:define>
+	</ui:decorate>
+</h:body>
+</html>

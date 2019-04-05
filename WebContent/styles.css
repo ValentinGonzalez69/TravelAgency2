@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+
+h3 {
+	color:#3CBD99;
+	font-style : bold;
+	font-family: helvetica;
+	
+}
+
+.flot2 {
+	background-color: #e0e0e0;
+	 text-align: justify;
+	 text-justify: auto;
+	 width : 60%;
+	
+}
+
+
+.flotte {
+float:right;
+width: 30%;
+
+
+}
+
+
+#qui {
+	align: left;
+	width: 800px;
+	height: 700px;
+	background: url(".resources/autres/neige.jpg");
+}

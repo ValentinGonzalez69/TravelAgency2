@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+
+h3 {
+	color:#3CBD99;
+	font-style : bold;
+	font-family: helvetica;
+	
+}
+
+.flot2 {
+	background-color: #e0e0e0;
+	 text-align: justify;
+	 text-justify: auto;
+	 width : 60%;
+	
+}
+
+
+.flotte {
+float:right;
+width: 30%;
+
+
+}
+
+.header {
+	width: 881px;
+	height: 157px;
+	background: transparent url('/resources/image/nature6.jpg') no-repeat;
+	display:block;
+}
+

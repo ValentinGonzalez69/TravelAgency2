@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui" xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+<title>Hotel</title>
+	<script type="text/javascript">    
+PrimeFaces.locales ['fr'] = { closeText: 'Fermer', prevText: 'Précédent', nextText: 'Suivant', monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre' ], monthNamesShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc' ], dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'], dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'], dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'], weekHeader: 'Semaine', firstDay: 1, isRTL: false, showMonthAfterYear: false, yearSuffix:'', timeOnlyTitle: 'Choisir l\'heure', timeText: 'Heure', hourText: 'Heures', minuteText: 'Minutes', secondText: 'Secondes', currentText: 'Maintenant', ampm: false, month: 'Mois', week: 'Semaine', day: 'Jour', allDayText: 'Toute la journée' };
+</script>
+	
+</h:head>
+<h:body>
+	<ui:decorate template="/WEB-INF/templates/BasicTemplate.xhtml">
+		<ui:define name="content">
+
+
+			<p:dialog header="Réservation" widgetVar="dlg1" minHeight="40">
+				<h:form>
+
+
+					<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+						<p:outputLabel for="console" value="Nombre de nuits" />
+						<p:selectOneMenu id="console" value="#{dateBean.nbNuit}"
+							style="width:125px">
+							<f:selectItem itemLabel="Choisissez" itemValue="" />
+							<f:selectItem itemLabel="1" itemValue="1" />
+							<f:selectItem itemLabel="2" itemValue="2" />
+							<f:selectItem itemLabel="3" itemValue="3" />
+							<f:selectItem itemLabel="4" itemValue="4" />
+							<f:selectItem itemLabel="5" itemValue="5" />
+							<f:selectItem itemLabel="6" itemValue="6" />
+							<f:selectItem itemLabel="7" itemValue="7" />
+							<f:selectItem itemLabel="8" itemValue="8" />
+							<f:selectItem itemLabel="9" itemValue="9" />
+							<f:selectItem itemLabel="10" itemValue="10" />
+							<f:selectItem itemLabel="11" itemValue="11" />
+							<f:selectItem itemLabel="12" itemValue="12" />
+							<f:selectItem itemLabel="13" itemValue="13" />
+							<f:selectItem itemLabel="14" itemValue="14" />
+							<f:selectItem itemLabel="15" itemValue="15" />
+						</p:selectOneMenu>
+					</h:panelGrid>
+				</h:form>
+				<p:outputLabel for="mask" value="Du : " />
+				<p:calendar id="mask" value="#{dateBean.dateD}"
+					pattern="dd-MM-yyyy" mask="true" />
+
+				<p:outputLabel for="mask" value="  Au : " />
+				<p:calendar id="mask1" value="#{dateBean.dateF}"
+					pattern="dd-MM-yyyy" mask="true" />
+				<br />
+				<br />
+
+				<p:button outcome="devis.xhtml" value="Réserver" align="center" />
+
+			</p:dialog>
+			<h:panelGroup layout="block"
+				rendered="#{beanHotel.country == 'Finlande'}">
+				<h3>Inari, température moyenne : -1°C</h3>
+				<h:form>
+					<p:accordionPanel>
+						<p:tab title="Hotel Korpikartano***">
+							<h:panelGrid columns="2" cellpadding="5">
+
+
+								<p:graphicImage name="/autres/hotel-korpikartano.jpg" />
+								<p:graphicImage name="/autres/hotel-korpikartano2.jpg" />
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="80 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText value="WiFi, piscine extérieure, bar, restaurant" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+
+
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Wilderness Hotel Inari****">
+							<h:panelGrid columns="2" cellpadding="5">
+
+								<p:graphicImage name="/autres/wilderness.jpg" />
+								<p:graphicImage name="/autres/wilderness2.jpg" />
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="120 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText value="WiFi, restaurant, bar" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+
+
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Hotelli Inarin Kultahovi Oy***">
+							<h:panelGrid columns="2" cellpadding="5">
+
+
+								<h:graphicImage name="/autres/hotel1.jpg" />
+								<h:graphicImage name="/autres/hotel3.jpg" />
+
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="110 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText
+									value="Navette aéroport, animaux acceptés, restaurant" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+					</p:accordionPanel>
+				</h:form>
+				<h3>Helsinki, température moyenne : 8°C</h3>
+				<h:form>
+					<p:accordionPanel>
+						<p:tab title="Hotel Katajanokka***">
+							<h:panelGrid columns="2" cellpadding="5">
+								<p:graphicImage name="/autres/hotel-katajanokka.jpg" />
+								<p:graphicImage name="/autres/hotel-katajanokka2.jpg" />
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="122 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText value="WiFi, parking, restaurant, fitness" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Clarion Hotel Helsinki***">
+							<h:panelGrid columns="2" cellpadding="5">
+
+								<p:graphicImage name="/autres/clarion_helsinki.jpg" />
+								<p:graphicImage name="/autres/clarion_helsinki2.jpg" />
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="141 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText
+									value="WiFi, petit déjeuner, parking, piscine extérieure" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="GLO Hotel Art***">
+							<h:panelGrid columns="2" cellpadding="5">
+								<p:graphicImage name="/autres/glohotel.jpg" />
+								<p:graphicImage name="/autres/glohotel2.jpg" />
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="108 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText
+									value="WiFi, petit déjeuner, navette aéroport, parking" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+					</p:accordionPanel>
+				</h:form>
+			</h:panelGroup>
+			<h:panelGroup layout="block" id="Canada"
+				rendered="#{beanHotel.country=='Canada'}">
+				<h3>Vancouver, température moyenne : 12°C</h3>
+				<h:form>
+					<p:accordionPanel>
+						<p:tab title="Fairmont Waterfront, Vancouver*****">
+							<h:panelGrid columns="2" cellpadding="5">
+
+
+								<p:graphicImage name="/autres/fairmont.jpg" />
+								<p:graphicImage name="/autres/fairmont2.jpg" />
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="203 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText
+									value="WiFi, parking, piscine extérieure, animaux acceptés" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="The Fairmont Hotel Vancouver****">
+							<h:panelGrid columns="2" cellpadding="5">
+
+								<p:graphicImage name="/autres/thefairmont.jpeg" />
+								<p:graphicImage name="/autres/thefairmont2.jpeg" />
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="219 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText value="WiFi, parking, piscine extérieure" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Four Seasons Hotel Vancouver*****">
+							<h:panelGrid columns="2" cellpadding="5">
+								<p:graphicImage name="/autres/fourseason.jpg" />
+								<p:graphicImage name="/autres/fourseason2.jpg" />
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="280" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText value="WiFi, parking, animaux acceptés" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+					</p:accordionPanel>
+				</h:form>
+				<h3>YellowKnife, température moyenne : -7°C</h3>
+				<h:form>
+					<p:accordionPanel>
+						<p:tab title="The Explorer Hotel****">
+							<h:panelGrid columns="2" cellpadding="5">
+								<p:graphicImage name="/autres/explorer.jpg" />
+								<p:graphicImage name="/autres/explorer2.jpg" />
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="133 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText value="WiFi, animaux acceptés, navette aéroport" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Stanton Suites Hotel****">
+							<h:panelGrid columns="2" cellpadding="5">
+								<p:graphicImage name="/autres/stanton.jpg" />
+								<p:graphicImage name="/autres/stanton2.jpg" />
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="132 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText value="WiFi, animaux acceptés, fitness" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Capital Suites***">
+							<h:panelGrid columns="2" cellpadding="5">
+								<p:graphicImage name="/autres/capitalsuites.jpg" />
+								<p:graphicImage name="/autres/capitalsuites2.jpg" />
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="112 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText value="WiFi, parking, navette aéroport" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+					</p:accordionPanel>
+				</h:form>
+			</h:panelGroup>
+			<h:panelGroup layout="block" id="Norvège"
+				rendered="#{beanHotel.country=='Norvege'}">
+				<h3>Bodø, température moyenne : 12°C</h3>
+				<h:form>
+					<p:accordionPanel>
+						<p:tab title="Skagen Hotel***">
+							<h:panelGrid columns="2" cellpadding="5">
+								<p:graphicImage name="/autres/skagen-hotel.jpg" />
+								<p:graphicImage name="/autres/skagen-hotel2.jpg" />
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="132" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText
+									value="WiFi, petit déjeuner, animaux acceptés, restaurant" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Scandic Havet****">
+							<h:panelGrid columns="2" cellpadding="5">
+
+								<p:graphicImage name="/autres/scandic_havet.jpg" />
+								<p:graphicImage name="/autres/scandic_havet2.jpg" />
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="104" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText
+									value="WiFi, petit déjeuner, animaux acceptés, fitness" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Clarion Collection Hotel Grand Bodø***">
+							<h:panelGrid columns="2" cellpadding="5">
+
+								<p:graphicImage name="/autres/collection-hotel.jpg" />
+								<p:graphicImage name="/autres/collection-hotel2.jpg" />
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="128 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText value="WiFi, petit déjeuner, parking" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+					</p:accordionPanel>
+				</h:form>
+				<h3>Balestrand, température moyenne : 7°C</h3>
+				<h:form>
+					<p:accordionPanel>
+						<p:tab title="KringsjÃ¢ Hotel***">
+							<h:panelGrid columns="2" cellpadding="5">
+
+								<p:graphicImage name="/autres/kringsj.jpg" />
+								<p:graphicImage name="/autres/kringsj2.jpg" />
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="122 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText value="WiFi, restaurant" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Blix hotell***">
+							<h:panelGrid columns="2" cellpadding="5">
+								<p:graphicImage name="/autres/blixhotell.jpg" />
+								<p:graphicImage name="/autres/blixhotell2.jpg" />
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="135 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText value="WiFi, parking, restaurant" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Dragsvik Fjordhotell***">
+							<h:panelGrid columns="2" cellpadding="5">
+
+								<p:graphicImage name="/autres/dragsvik.jpg" />
+								<p:graphicImage name="/autres/dragsvik2.jpg" />
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="120 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText
+									value="WiFi, petit déjeuner, restaurant, accès à la plage" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+					</p:accordionPanel>
+				</h:form>
+			</h:panelGroup>
+
+			<h:panelGroup layout="block" id="Suède"
+				rendered="#{beanHotel.country=='Suede'}">
+				<h3>Luleå, température moyenne : 2°C</h3>
+				<h:form>
+					<p:accordionPanel>
+						<p:tab title="Luleå stadshotell****">
+							<h:panelGrid columns="2" cellpadding="5">
+								<p:graphicImage name="/autres/elite.jpg" />
+								<p:graphicImage name="/autres/elite2.jpg" />
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="80 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText
+									value="WiFi, petit déjeuner, parking, animaux acceptés" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Comfort Hotel Arctic****">
+							<h:panelGrid columns="2" cellpadding="5">
+
+
+								<p:graphicImage name="/autres/comfort_hotel.jpg" />
+								<p:graphicImage name="/autres/comfort_hotel2.jpg" />
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="79 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText
+									value="WiFi, petit déjeuner, parking, navette aéroport" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Clarion Hotel Sense****">
+							<h:panelGrid columns="2" cellpadding="5">
+
+
+								<p:graphicImage name="/autres/sense.jpg" />
+								<p:graphicImage name="/autres/sense2.jpg" />
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="90 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText
+									value="WiFi, petit déjeuner, parking, piscine intérieure" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+					</p:accordionPanel>
+				</h:form>
+				<h3>Kiruna, température moyenne : -2°C</h3>
+				<h:form>
+					<p:accordionPanel>
+						<p:tab title="Hotel Arctic Eden AB***">
+							<h:panelGrid columns="2" cellpadding="5">
+
+								<p:graphicImage name="/autres/arcticeden.jpg" />
+								<p:graphicImage name="/autres/arcticeden2.jpg" />
+
+
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="129 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText value="WiFi, parking, piscine intérieure" />
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Hotel Kebne***">
+							<h:panelGrid columns="2" cellpadding="5">
+
+								<p:graphicImage name="/autres/kebne.jpg" />
+								<p:graphicImage name="/autres/kebne2.jpg" />
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="102 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText value="WiFi, petit déjeuner, service de chambre" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Malmfältens logi konferens AB">
+							<h:panelGrid columns="2" cellpadding="5">
+
+								<p:graphicImage name="/autres/malmfaltens.jpg" />
+								<p:graphicImage name="/autres/malmfaltens2.jpg" />
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="92 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText value="WiFi, petit déjeuner, animaux acceptés" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+					</p:accordionPanel>
+				</h:form>
+			</h:panelGroup>
+			<h:panelGroup layout="block" id="Island"
+				rendered="#{beanHotel.country=='Islande'}">
+				<h3>Hólmavík, température moyenne : 4°C</h3>
+				<h:form>
+					<p:accordionPanel>
+						<p:tab title="Finna Hotel">
+							<h:panelGrid columns="2" cellpadding="5">
+								<p:graphicImage name="/autres/finna.jpg" />
+								<p:graphicImage name="/autres/finna2.jpg" />
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="100 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText value="WiFi, convient aux enfants" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Broddanes HI Hostel">
+							<h:panelGrid columns="2" cellpadding="5">
+								<p:graphicImage name="/autres/brodanes.jpg" />
+								<p:graphicImage name="/autres/brodanes2.jpg" />
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="70 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText value="WiFi" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Hótel Bjarkalundur">
+							<h:panelGrid columns="2" cellpadding="5">
+
+								<p:graphicImage name="/autres/bjarkalundur.jpg" />
+								<p:graphicImage name="/autres/bjarkalundur2.jpg" />
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="85 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText value="WiFi, parking, restaurant" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+					</p:accordionPanel>
+				</h:form>
+				<h3>Húsavík, température moyenne : 2°C</h3>
+				<h:form>
+					<p:accordionPanel>
+						<p:tab title="Fosshotel Húsavík***">
+							<h:panelGrid columns="2" cellpadding="5">
+								<p:graphicImage name="/autres/fosshotel.jpg" />
+								<p:graphicImage name="/autres/fosshotel2.jpg" />
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="120 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText value="WiFi, blanchisserie, conciergerie" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Höfði guesthouse">
+							<h:panelGrid columns="2" cellpadding="5">
+
+								<p:graphicImage name="/autres/guesthouse.jpg" />
+								<p:graphicImage name="/autres/guesthouse2.jpg" />
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="75 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText value="WiFi, convient aux enfants, blanchisserie" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Húsavík Hotels">
+							<h:panelGrid columns="2" cellpadding="5">
+
+								<p:graphicImage name="/autres/husavikhotels.jpg" />
+								<p:graphicImage name="/autres/husavikhotels2.jpg" />
+
+
+								<h:outputText value="Prix :" style="font-weight: bold" />
+								<h:outputText value="153 euros" />
+
+								<h:outputText value="Modalité : " style="font-weight: bold" />
+								<h:outputText value="WiFi, convient aux enfants" />
+
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Je pars!" type="button"
+										onclick="PF('dlg1').show();" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+					</p:accordionPanel>
+				</h:form>
+			</h:panelGroup>
+
+		</ui:define>
+	</ui:decorate>
+
+</h:body>
+</html>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:b="http://bootsfaces.net/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui" xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+<title>IGNORED</title>
+</h:head>
+<h:body>
+    <ui:composition>
+       <div style="width: 100%; font-size: 30px; line-height: 24px; 
+            background-color: black; color: white">
+              
+            <p:megaMenu
+                style="width: 20%;margin-top:20px;font-size:15px">
+                <p:submenu label="Accueil" icon="pi pi-check">
+                    <p:column>
+                        <p:submenu label="Index">
+                            <p:menuitem value="Accueil" url="index.xhtml" />
+                            <p:menuitem value="Qui sommes-nous?" url="qui.xhtml" />
+                        </p:submenu>
+                    </p:column>
+                </p:submenu>
+
+                <p:submenu label="Reserver" icon="pi pi-file">
+
+                    <p:column>
+
+                        <p:submenu label="Sélectionner un pays">
+                            <p:menuitem value="Pays" url="choixpays.xhtml" />
+
+                        </p:submenu>
+                    </p:column>
+
+                </p:submenu>
+                <p:submenu label="Contact" icon="pi pi-pencil">
+                    <p:column>
+                        <p:submenu label="Adresse : 42 rue de l'Université; 69000 Lyon">
+
+                        </p:submenu>
+                        <p:submenu label="Téléphone 06.14.25.36.47">
+                        </p:submenu>
+                  
+                        <p:submenu label="Email">
+                            <p:menuitem value="Envoyez un email!" url="contact.xhtml" />
+
+                        </p:submenu>
+
+                    </p:column>
+                </p:submenu>
+            </p:megaMenu>
+           
+            <div align="center" >
+				<h:graphicImage value="/resources/autres/logo1.jpg" /> 
+				 <p style="text-align:center" >L'Air Frais! Gants et bonnet CHAUDEMENT recommandés!</p></div> <br/>
+			</div>
+        
+        </ui:composition>
+
+</h:body>
+</html>
